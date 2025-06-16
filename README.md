@@ -1,6 +1,6 @@
 # 🧱 Fábrica de Tijolos - Frontend Angular
 
-![Capa do Projeto](./capa.png)
+![Capa do Projeto](./cap.png)
 
 Este repositório contém o frontend desenvolvido em **Angular** para o desafio técnico da vaga de **Desenvolvedor Full Stack** da empresa **GRB**.
 
