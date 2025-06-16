@@ -1,0 +1,17 @@
+<div class="detalhe-container">
+  <h2 class="titulo-centralizado">Detalhes do Tijolo</h2>
+
+  <div class="card-detalhe" *ngIf="tijolo">
+    <p><span class="label">ID:</span> {{ tijolo.id }}</p>
+    <p><span class="label">Cor:</span> {{ tijolo.cor }}</p>
+    <p><span class="label">Furos:</span> {{ tijolo.furos }}</p>
+    <p><span class="label">Status:</span> {{ tijolo.status }}</p>
+    <p><span class="label">Defeituoso:</span> {{ tijolo.defeituoso ? 'Sim' : 'Não' }}</p>
+  </div>
+
+  <div class="voltar-container">
+    <button routerLink="/" class="btn-padrao">
+      <i class="fas fa-arrow-left"></i> Voltar
+    </button>
+  </div>
+</div>

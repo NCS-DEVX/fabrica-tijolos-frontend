@@ -1,0 +1,66 @@
+<div class="container">
+  <h2 class="titulo-centralizado">Relatório de Tijolos</h2>
+
+  <div class="voltar-container">
+    <button class="btn-padrao" routerLink="/">
+      <i class="fas fa-arrow-left"></i> Voltar
+    </button>
+  </div>
+
+  <div *ngIf="dados">
+    <!-- Resumo principal -->
+    <div class="resumo">
+      <div class="card aprovado">
+        <p class="valor">{{ dados.totalAprovados }}</p>
+        <p class="label">Aprovados</p>
+      </div>
+
+      <div class="card reprovado">
+        <p class="valor">{{ dados.totalReprovados }}</p>
+        <p class="label">Reprovados</p>
+      </div>
+
+      <div class="card inspecao">
+        <p class="valor">{{ dados.totalEmInspecao }}</p>
+        <p class="label">Em Inspeção</p>
+      </div>
+
+      <div class="card defeituoso">
+        <p class="valor">{{ dados.totalDefeituosos }}</p>
+        <p class="label">Defeituosos</p>
+      </div>
+      
+    <!-- Estatísticas adicionais como cards -->
+    <div class="resumo-estendido">
+      <div class="card branco-pares">
+        <p class="label"><strong>Tijolos brancos com furos pares</strong></p>
+        <p class="valor">{{ dados.brancosFurosPares }}</p>
+      </div>
+
+      <div class="card branco-pares">
+        <p class="label"><strong>Tijolos brancos com furos ímpares</strong></p>
+        <p class="valor">{{ dados.brancosFurosImpares }}</p>
+      </div>
+
+      <div class="card branco-pares">
+        <p class="label"><strong>Tijolos pretos com furos pares</strong></p>
+        <p class="valor">{{ dados.pretosFurosPares }}</p>
+      </div>
+
+      <div class="card branco-pares">
+        <p class="label"><strong>Tijolos pretos com furos ímpares</strong></p>
+        <p class="valor">{{ dados.pretosFurosImpares }}</p>
+      </div>
+
+      <div class="card branco-pares">
+        <p class="label"><strong>Total de tijolos brancos</strong></p>
+        <p class="valor">{{ dados.totalBrancos }}</p>
+      </div>
+
+      <div class="card branco-pares">
+        <p class="label"><strong>Total de tijolos pretos</strong></p>
+        <p class="valor">{{ dados.totalPretos }}</p>
+      </div>
+    </div>
+  </div>
+</div>

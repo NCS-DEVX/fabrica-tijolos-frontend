@@ -1,0 +1,120 @@
+<div class="titulo-centralizado-wrapper">
+  <h2 class="titulo-centralizado">
+    <i class="fas fa-cubes"></i> Lista de Tijolos
+  </h2>
+</div>
+
+<div class="faixa-vermelha"></div>
+
+<div class="container">
+  <div class="botao-gerar">
+    <button class="btn-relatorio" routerLink="/relatorio">
+      <i class="fas fa-chart-bar"></i> Gerar Relatório
+    </button>
+  </div>
+
+  <!-- Formulário de cadastro com validação -->
+  <form (ngSubmit)="cadastrarTijolo()" #formTijolo="ngForm" class="form-cadastro">
+    <div class="campo">
+      <label>Cor:</label>
+      <input type="text" name="cor" [(ngModel)]="novoTijolo.cor" #cor="ngModel" required />
+      <div class="erro" *ngIf="cor.invalid && cor.touched">Cor é obrigatória</div>
+    </div>
+
+    <div class="campo">
+      <label>Furos:</label>
+      <input type="text" name="furos" [(ngModel)]="novoTijolo.furos" #furos="ngModel" required />
+      <div class="erro" *ngIf="furos.invalid && furos.touched">Furos é obrigatório</div>
+    </div>
+
+    <div class="botoes-acoes">
+      <button class="btn-cadastrar" type="submit" [disabled]="formTijolo.invalid">
+        <i class="fas fa-plus"></i> Cadastrar Tijolo
+      </button>
+      <button class="btn-aleatorio" type="button" (click)="gerarAleatorio()">
+        <i class="fas fa-random"></i> Gerar Aleatório
+      </button>
+    </div>
+  </form>
+
+  <!-- Filtros e Buscar por ID na mesma linha -->
+  <div class="filtros-busca-container">
+    <div class="filtros">
+      <label>
+        Cor:
+        <select [(ngModel)]="filtroCor" (change)="carregarTijolos()">
+          <option value="">Todas</option>
+          <option value="branco">Branco</option>
+          <option value="preto">Preto</option>
+        </select>
+      </label>
+
+      <label>
+        Status:
+        <select [(ngModel)]="filtroStatus" (change)="carregarTijolos()">
+          <option value="">Todos</option>
+          <option value="EM_INSPECAO">Em Inspeção</option>
+          <option value="APROVADO">Aprovado</option>
+          <option value="REPROVADO">Reprovado</option>
+        </select>
+      </label>
+
+      <label>
+        Defeituoso:
+        <select [(ngModel)]="filtroDefeituoso" (change)="carregarTijolos()">
+          <option value="">Todos</option>
+          <option value="true">Sim</option>
+          <option value="false">Não</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="busca-id">
+      <label for="buscaId">Buscar por ID:</label>
+      <input type="number" id="buscaId" [(ngModel)]="buscaId" name="buscaId" />
+      <button class="btn-buscar" (click)="buscarPorId()">
+        <i class="fas fa-search"></i> Buscar
+      </button>
+    </div>
+  </div>
+
+  <!-- Tabela -->
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Cor</th>
+        <th>Furos</th>
+        <th>Status</th>
+        <th>Defeituoso</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of tijolos">
+        <td>{{ t.id }}</td>
+        <td>{{ t.cor }}</td>
+        <td>{{ t.furos }}</td>
+        <td [ngClass]="{
+              'status-aprovado': t.status === 'APROVADO',
+              'status-reprovado': t.status === 'REPROVADO',
+              'status-inspecao': t.status === 'EM_INSPECAO'
+            }">
+          {{ t.status === 'EM_INSPECAO' ? 'EM INSPEÇÃO' : t.status }}
+        </td>
+        <td>{{ t.defeituoso === null ? '—' : (t.defeituoso ? 'Sim' : 'Não') }}</td>
+        <td>
+          <button class="aprovar" (click)="aprovar(t.id)" [disabled]="t.status !== 'EM_INSPECAO'">Aprovar</button>
+          <button class="reprovar" (click)="reprovar(t.id)" [disabled]="t.status !== 'EM_INSPECAO'">Reprovar</button>
+          <button class="deletar" (click)="deletar(t.id)">Deletar</button>
+          <button class="detalhes" [routerLink]="['/tijolo', t.id]">Detalhes</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Mensagem de erro caso o ID não seja encontrado -->
+  <div *ngIf="mensagemErro" class="mensagem-erro">
+    {{ mensagemErro }}
+  </div>
+</div>
