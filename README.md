@@ -1,27 +1,63 @@
-# FabricaTijolosFrontend
+# 🧱 Fábrica de Tijolos - Frontend Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.10.
+![Capa do Projeto](./capa.png)
 
-## Development server
+Este repositório contém o frontend desenvolvido em **Angular** para o desafio técnico da vaga de **Desenvolvedor Full Stack** da empresa **GRB**.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+A aplicação permite interações completas com o backend, como criação, inspeção e visualização de tijolos, além de geração de relatórios estatísticos.
 
-## Code scaffolding
+---
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 🚀 Tecnologias Utilizadas
 
-## Build
+- Angular 15
+- TypeScript
+- Bootstrap
+- SCSS
+- Angular Notifier
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+---
 
-## Running unit tests
+## ⚙️ Como Executar o Projeto
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### 📦 Instalar dependências
 
-## Running end-to-end tests
+```bash
+npm install --legacy-peer-deps
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+> ⚠️ **Obs:** Devido à compatibilidade entre Angular 15 e `angular-notifier`, é necessário usar `--legacy-peer-deps` na instalação. A aplicação funciona normalmente após isso.
 
-## Further help
+### ▶️ Rodar o projeto
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+ng serve
+```
+
+Acesse o frontend em:  
+📍 [http://localhost:4200](http://localhost:4200)
+
+---
+
+## 📊 Funcionalidades Disponíveis
+
+✅ Listagem de tijolos  
+✅ Filtro por cor, status e defeituoso  
+✅ Alteração de status de inspeção  
+✅ Geração de tijolo aleatório  
+✅ Relatório estatístico completo  
+✅ Notificações visuais com Angular Notifier
+
+---
+
+## 🛠 Backend Spring Boot
+
+Este frontend consome os dados expostos pela API Java disponível em:  
+👉 [https://github.com/NCS-DEVX/fabrica-tijolos](https://github.com/NCS-DEVX/fabrica-tijolos)
+
+---
+
+## 👨‍💻 Autor
+
+**Nathan Silva**  
+Candidato à vaga de Desenvolvedor Full Stack - GRB
